@@ -9,7 +9,7 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 gulp.task('styles', () => {
-	return gulp.src('app/styles/*.less')
+	return gulp.src('app/assets/css/*.less')
 		.pipe($.plumber())
 		.pipe($.sourcemaps.init())
 		.pipe($.less({
@@ -17,7 +17,7 @@ gulp.task('styles', () => {
 		}))
 		.pipe($.autoprefixer({browsers: ['last 1 version']}))
 		.pipe($.sourcemaps.write())
-		.pipe(gulp.dest('.tmp/styles'))
+		.pipe(gulp.dest('.tmp/assets/css'))
 		.pipe(reload({stream: true}));
 });
 
@@ -36,7 +36,7 @@ const testLintOptions = {
 	}
 };
 
-gulp.task('lint', lint('app/scripts/**/*.js'));
+gulp.task('lint', lint('app/assets/js/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles'], () => {
@@ -53,7 +53,7 @@ gulp.task('html', ['styles'], () => {
 });
 
 gulp.task('images', () => {
-	return gulp.src('app/images/**/*')
+	return gulp.src('app/assets/img/**/*')
 		.pipe($.if($.if.isFile, $.cache($.imagemin({
 			progressive: true,
 			interlaced: true,
@@ -65,15 +65,15 @@ gulp.task('images', () => {
 			console.log(err);
 			this.end();
 		})))
-		.pipe(gulp.dest('dist/images'));
+		.pipe(gulp.dest('dist/assets/img'));
 });
 
 gulp.task('fonts', () => {
 	return gulp.src(require('main-bower-files')({
 		filter: '**/*.{eot,svg,ttf,woff,woff2}'
-	}).concat('app/fonts/**/*'))
-		.pipe(gulp.dest('.tmp/fonts'))
-		.pipe(gulp.dest('dist/fonts'));
+	}).concat('app/assets/fonts/**/*'))
+		.pipe(gulp.dest('.tmp/assets/fonts'))
+		.pipe(gulp.dest('dist/assets/fonts'));
 });
 
 gulp.task('extras', () => {
@@ -101,13 +101,14 @@ gulp.task('serve', ['styles', 'fonts'], () => {
 
 	gulp.watch([
 		'app/*.html',
-		'app/scripts/**/*.js',
-		'app/images/**/*',
-		'.tmp/fonts/**/*'
+		'app/pages/**/*.html',
+		'app/assets/js/**/*.js',
+		'app/assets/img/**/*',
+		'.tmp/assets/fonts/**/*'
 	]).on('change', reload);
 
-	gulp.watch('app/styles/**/*.less', ['styles']);
-	gulp.watch('app/fonts/**/*', ['fonts']);
+	gulp.watch('app/assets/css/**/*.less', ['styles']);
+	gulp.watch('app/assets/fonts/**/*', ['fonts']);
 	gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
@@ -140,15 +141,15 @@ gulp.task('serve:test', () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-	gulp.src('app/styles/*.less')
+	gulp.src('app/assets/css/*.less')
 		.pipe(wiredep({
 			ignorePath: /^(\.\.\/)+/
 		}))
-		.pipe(gulp.dest('app/styles'));
+		.pipe(gulp.dest('app/assets/css'));
 
-	gulp.src('app/*.html')
+	gulp.src('app/**/*.html')
 		.pipe(wiredep({
-			exclude: ['bootstrap-sass'],
+			exclude: ['rangy-1.3', 'mocha'],
 			ignorePath: /^(\.\.\/)*\.\./
 		}))
 		.pipe(gulp.dest('app'));

@@ -1,0 +1,21 @@
+{
+	"name": "admindev",
+	"private": true,
+	"dependencies": {
+		"modernizr": "~2.8.1",
+		"bootstrap": "~3.3.5"
+	},
+	"overrides": {
+		"bootstrap": {
+			"main": [
+				"less/bootstrap.less",
+				"fonts/bootstrap/*",
+				"dist/js/bootstrap.js"
+			]
+		}
+	},
+	"devDependencies": {
+		"chai": "~3.3.0",
+		"mocha": "~2.3.3"
+	}
+}

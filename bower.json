@@ -1,92 +1,127 @@
 {
-  "name": "admindev",
-  "private": true,
-  "dependencies": {
-    "modernizr": "~2.8.1",
-    "bootstrap": "~3.3.5",
-    "seiyria-bootstrap-slider": "~5.2.1",
-    "bootstrap3-wysihtml5-bower": "~0.3.3",
-    "Chart.js": "chartjs#~1.0.2",
-    "ckeditor": "~4.5.4",
-    "mjolnic-bootstrap-colorpicker": "~2.3.0",
-    "datatables": "DataTables#~1.10.9",
-    "bootstrap-datepicker": "~1.4.1",
-    "bootstrap-daterangepicker": "~2.0.14",
-    "fastclick": "~1.0.6",
-    "Flot": "https://github.com/flot/flot.git#~0.8.3",
-    "fullcalendar": "~2.4.0",
-    "iCheck": "icheck#~1.0.2",
-    "jquery.inputmask": "~3.2.2",
-    "ion.rangeslider": "ion.rangeSlider#~2.1.1",
-    "jquery-ui": "jqueryui#~1.11.4",
-    "bower-jvectormap": "~1.2.2",
-    "jquery-Knob": "jquery-knob#~1.2.11",
-    "morris.js": "morrisjs#~0.5.1",
-    "PACE": "pace#~1.0.2",
-    "select2": "~4.0.0",
-    "slimScroll": "slimscroll#~1.3.6",
-    "jquery-sparkline": "~2.1.3",
-    "bootstrap-timepicker": "~0.5.1",
-    "Ionicons": "ionicons#~2.0.1",
-    "font-awesome": "fontawesome#~4.4.0"
-  },
-  "overrides": {
-    "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "fonts/*"
-      ]
-    },
-    "font-awesome": {
-    	"main": [
-    		"css/font-awesome.css",
-    		"fonts/*"
-    	]
-    },
-    "bower-jvectormap": {
-    	"main": [
-    		"jquery-jvectormap-1.2.2.css",
-    		"jquery-jvectormap-1.2.2.min.js",
-    		"jquery-jvectormap-world-mill-en.js"
-    	]
-    },
-    "ckeditor": {
-    	"main": ["ckeditor.js"]
-    },
-    "Flot": {
-    	"main": [
-    		"jquery.flot.js",
-    		"excanvas.js",
-    		"jquery.colorhelpers.js",
-    		"jquery.flot.canvas.js",
-    		"jquery.flot.categories.js",
-    		"jquery.flot.crosshair.js",
-    		"jquery.flot.errorbars.js",
-    		"jquery.flot.fillbetween.js",
-    		"jquery.flot.image.js",
-    		"jquery.flot.navigate.js",
-    		"jquery.flot.pie.js",
-    		"jquery.flot.resize.js",
-    		"jquery.flot.selection.js",
-    		"jquery.flot.stack.js",
-    		"jquery.flot.symbol.js",
-    		"jquery.flot.threshold.js",
-    		"jquery.flot.time.js"
-    	]
-    },
-    "jquery.inputmask": {
-    	"main": [
-			"dist/inputmask/inputmask.js",
-			"dist/inputmask/inputmask.extensions.js",
-			"dist/inputmask/inputmask.date.extensions.js",
-			"dist/inputmask/inputmask.numeric.extensions.js",
-			"dist/inputmask/inputmask.phone.extensions.js",
-			"dist/inputmask/inputmask.regex.extensions.js"
-    	]
-    }
-  },
-  "devDependencies": {
-    "chai": "~3.3.0",
-    "mocha": "~2.3.3"
-  }
+	"name": "admindev",
+	"private": true,
+	"dependencies": {
+		"modernizr": "~2.8.1",
+		"bootstrap": "~3.3.5",
+		"seiyria-bootstrap-slider": "~5.2.1",
+		"bootstrap3-wysihtml5-bower": "~0.3.3",
+		"Chart.js": "chartjs#~1.0.2",
+		"ckeditor": "~4.5.4",
+		"mjolnic-bootstrap-colorpicker": "~2.3.0",
+		"datatables": "DataTables#~1.10.9",
+		"bootstrap-datepicker": "~1.4.1",
+		"bootstrap-daterangepicker": "~2.0.14",
+		"fastclick": "~1.0.6",
+		"Flot": "https://github.com/flot/flot.git#~0.8.3",
+		"fullcalendar": "~2.4.0",
+		"iCheck": "icheck#~1.0.2",
+		"jquery.inputmask": "~3.2.2",
+		"ion.rangeslider": "ion.rangeSlider#~2.1.1",
+		"jquery-ui": "jqueryui#~1.11.4",
+		"bower-jvectormap": "~1.2.2",
+		"jquery-Knob": "jquery-knob#~1.2.11",
+		"morris.js": "morrisjs#~0.5.1",
+		"PACE": "pace#~1.0.2",
+		"select2": "~4.0.0",
+		"slimScroll": "slimscroll#~1.3.6",
+		"jquery-sparkline": "~2.1.3",
+		"bootstrap-timepicker": "~0.5.1",
+		"Ionicons": "ionicons#~2.0.1",
+		"font-awesome": "fontawesome#~4.4.0"
+	},
+	"overrides": {
+		"bootstrap": {
+			"main": [
+				"less/bootstrap.less",
+				"fonts/*"
+			]
+		},
+		"font-awesome": {
+			"main": [
+				 "css/font-awesome.min.css",
+				 "fonts/*"
+			]
+		},
+		"bower-jvectormap": {
+			"main": [
+				 "jquery-jvectormap-1.2.2.css",
+				 "jquery-jvectormap-1.2.2.min.js",
+				 "jquery-jvectormap-world-mill-en.js"
+			]
+		},
+		"ckeditor": {
+			"main": [
+				"ckeditor.js"
+			]
+		},
+		"Flot": {
+			"main": [
+				 "jquery.flot.js",
+				 "jquery.flot.categories.js",
+				 "jquery.flot.navigate.js",
+				 "jquery.flot.pie.js",
+				 "jquery.flot.resize.js"
+			]
+		},
+		"jquery.inputmask": {
+			"main": [
+				 "dist/min/inputmask/inputmask.min.js",
+				 "dist/min/inputmask/inputmask.extensions.min.js",
+				 "dist/min/inputmask/inputmask.date.extensions.min.js"
+			]
+		},
+		"ion.rangeslider": {
+			"main": [
+				"js/ion.rangeSlider.js",
+				"css/ion.rangeSlider.css",
+				"css/ion.rangeSlider.skinNice.css",
+				"img/*"
+			]
+		},
+		"mjolnic-bootstrap-colorpicker": {
+			"main": [
+				"dist/css/bootstrap-colorpicker.min.css",
+			   "dist/js/bootstrap-colorpicker.min.js",
+			   "dist/img/bootstrap-colorpicker/*"
+			]
+		},
+		"fullcalendar" : {
+			"main": [
+				"dist/fullcalendar.min.css",
+				"dist/fullcalendar.print.css",
+				"dist/fullcalendar.min.js"
+			]
+		},
+		"handlebars": {
+			"main": [
+				"handlebars.min.js"
+			]
+		},
+		"iCheck": {
+			"main": [
+				"icheck.min.js"
+			]
+		},
+		"sparkline": {
+			"main": [
+				"dist/jquery.sparkline.min.js"
+			]
+		},
+		"morris": {
+			"main": [
+				"morris.css",
+				"morris.min.js"
+			]
+		},
+		"PACE": {
+			"main": [
+				"pace.min.js"
+			]
+		}
+	},
+	"devDependencies": {
+		"chai": "~3.3.0",
+		"mocha": "~2.3.3"
+	}
 }

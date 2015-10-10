@@ -39,7 +39,7 @@ const testLintOptions = {
 gulp.task('lint', lint('app/assets/js/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['styles'], () => {
+gulp.task('html', ['styles', 'html:useref'], () => {
 	const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
 	return gulp.src('app/index.html')
@@ -59,10 +59,7 @@ gulp.task('html:useref', () => {
 		.pipe(gulp.dest('dist'));
 });
 
-// TODO: copy datepicker locale folder
-// TODO: copy bootstrap3-wysihtml5-bower/dist/locales -> js/vendor
-// TODO: fullcalendar lang
-gulp.task('images', () => {
+gulp.task('images', ['images:bower'], () => {
 	return gulp.src('app/assets/img/**/*')
 		.pipe($.if($.if.isFile, $.cache($.imagemin({
 			progressive: true,
@@ -78,7 +75,7 @@ gulp.task('images', () => {
 		.pipe(gulp.dest('dist/assets/img'));
 });
 
-gulp.task('images:copy', ['clean'], () => {
+gulp.task('images:bower', () => {
 	return gulp.src(require('main-bower-files')({
 		filter: '**/*.{jpg,png}',
 	})).pipe(gulp.dest('dist/assets/img/vendor'));
@@ -92,13 +89,22 @@ gulp.task('fonts', () => {
 		.pipe(gulp.dest('dist/assets/fonts'));
 });
 
-gulp.task('extras', () => {
+gulp.task('extras', ['extras:locales'], () => {
 	return gulp.src([
 		'app/*.*',
 		'!app/*.html'
 	], {
 		dot: true
 	}).pipe(gulp.dest('dist'));
+});
+
+gulp.task('extras:locales', () => {
+	return gulp.src([
+			'bower_components/bootstrap-datepicker/dist/locales/*.js',
+			'bower_components/bootstrap3-wysihtml5-bower/dist/locales/*.js',
+			'bower_components/fullcalendar/dist/lang/*.js'
+		])
+		.pipe(gulp.dest('dist/assets/js/locales'));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
@@ -172,7 +178,7 @@ gulp.task('wiredep', () => {
 		.pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'html:useref', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
 	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
